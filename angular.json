@@ -31,7 +31,7 @@
               "src/styles.css"
             ],
             "scripts": [
-              "node_modules/vexflow/releases/vexflow-min.js"
+              "./node_modules/vexflow/releases/vexflow-min.js"
             ]
           },
           "configurations": {
