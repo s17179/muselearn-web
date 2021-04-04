@@ -1,28 +1,23 @@
-import { SheetMusicRenderer } from './sheet-music-renderer';
-import { Injectable } from '@angular/core';
 import { SheetMusic } from '../elements/sheet-music';
 import { Measure } from '../elements/measure';
+import { Subject } from 'rxjs';
 
-@Injectable()
 export class SheetMusicService {
-  private readonly measures: Map<number, Measure> = new Map();
-  private currentMeasureNumber = 1;
+  sheetMusic = new Subject<SheetMusic>();
 
-  constructor(private readonly sheetMusicRenderer: SheetMusicRenderer) {}
+  private readonly measures: Measure[] = [];
+
+  private currentMeasureNumber = 0;
 
   addMeasure(measure: Measure): void {
-    this.measures.set(this.currentMeasureNumber, measure);
+    this.measures[this.currentMeasureNumber] = measure;
 
     this.currentMeasureNumber++;
+
+    this.invokeRenderingSheetMusic();
   }
 
-  render(div: HTMLDivElement): void {
-    const measures: Measure[] = [];
-
-    this.measures.forEach((measure) => measures.push(measure));
-
-    const sheetMusic = new SheetMusic(measures);
-
-    this.sheetMusicRenderer.render(sheetMusic, div);
+  private invokeRenderingSheetMusic(): void {
+    this.sheetMusic.next(new SheetMusic(this.measures));
   }
 }

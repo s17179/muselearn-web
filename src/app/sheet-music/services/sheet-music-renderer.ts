@@ -1,4 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as VexType from 'vexflow';
 import { SheetMusic } from '../elements/sheet-music';
 import { Measure } from '../elements/measure';
@@ -7,11 +6,11 @@ import { Note } from '../elements/note';
 
 export class SheetMusicRenderer {
   render(sheetMusic: SheetMusic, div: HTMLDivElement): void {
+    div.innerText = '';
+
     const renderer = new Vex.Flow.Renderer(div, Vex.Flow.Renderer.Backends.SVG);
 
     renderer.resize(div.clientWidth, div.clientHeight);
-
-    const context = renderer.getContext();
 
     const rendererStateTracker = new RendererStateTracker(
       div.clientWidth,
@@ -22,14 +21,14 @@ export class SheetMusicRenderer {
     const measures = sheetMusic.getMeasures();
 
     measures.forEach((measure) =>
-      this.renderMeasure(measure, rendererStateTracker, context),
+      this.renderMeasure(measure, rendererStateTracker, renderer.getContext()),
     );
   }
 
   private renderMeasure(
     measure: Measure,
     rendererStateTracker: RendererStateTracker,
-    context: Vex.IRenderContext,
+    context: VexType.IRenderContext,
   ): void {
     const vexStave = new Vex.Flow.Stave(
       rendererStateTracker.getNextMeasureX(),
@@ -63,7 +62,7 @@ export class SheetMusicRenderer {
 
   private renderNotes(
     notes: Note[],
-    vexStave: Vex.Flow.Stave,
+    vexStave: VexType.Flow.Stave,
     context: Vex.IRenderContext,
   ): void {
     const vexStaveNotes = notes.map<Vex.Flow.StaveNote>((note) => {

@@ -5,9 +5,10 @@ export class RendererStateTracker {
   public readonly measureWidth = 400;
   private readonly spaceBetweenLines = 100;
   private readonly initialMeasureX = 10;
+  private readonly initialMeasureY = 0;
 
   private nextMeasureX = this.initialMeasureX;
-  private nextMeasureY = 0;
+  private nextMeasureY = this.initialMeasureY;
 
   private currentClefType?: ClefType;
   private currentTimeSignature?: TimeSignature;

@@ -6,4 +6,8 @@ export class SheetMusic {
   getMeasures(): Measure[] {
     return this.measures;
   }
+
+  isEmpty(): boolean {
+    return this.measures.length === 0;
+  }
 }

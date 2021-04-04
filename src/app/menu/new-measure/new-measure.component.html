@@ -1,0 +1,33 @@
+<h2 mat-dialog-title>Nowy takt</h2>
+
+<mat-dialog-content>
+
+  <form [formGroup]="newMeasureForm">
+    <div>
+      <mat-form-field>
+        <mat-label>Wybierz klucz</mat-label>
+        <mat-select formControlName="clef">
+          <mat-option value="bass">Basowy</mat-option>
+          <mat-option value="treble">Wiolinowy</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field>
+        <mat-label>Wybierz metrum</mat-label>
+        <mat-select formControlName="timeSignature">
+          <mat-option value="3/4">3/4</mat-option>
+          <mat-option value="4/4">4/4</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </form>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-raised-button color="primary" [mat-dialog-close]="newMeasureForm" [disabled]="!newMeasureForm.valid">
+    Dodaj
+  </button>
+</mat-dialog-actions>
