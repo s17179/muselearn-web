@@ -7,14 +7,18 @@ export class SheetMusicService {
 
   private readonly measures: Measure[] = [];
 
-  private currentMeasureNumber = 0;
-
   addMeasure(measure: Measure): void {
-    this.measures[this.currentMeasureNumber] = measure;
-
-    this.currentMeasureNumber++;
+    this.measures.push(measure);
 
     this.invokeRenderingSheetMusic();
+  }
+
+  removeLastMeasure(): void {
+    if (this.measures.length > 0) {
+      this.measures.pop();
+
+      this.invokeRenderingSheetMusic();
+    }
   }
 
   private invokeRenderingSheetMusic(): void {

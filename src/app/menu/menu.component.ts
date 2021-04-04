@@ -34,4 +34,8 @@ export class MenuComponent {
       }
     });
   }
+
+  onRemoveLastMeasure(): void {
+    this.sheetMusicService.removeLastMeasure();
+  }
 }
