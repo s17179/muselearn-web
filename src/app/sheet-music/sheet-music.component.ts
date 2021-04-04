@@ -5,13 +5,6 @@ import {
   OnDestroy,
   ViewChild,
 } from '@angular/core';
-import { Measure } from './elements/measure';
-import { ClefType } from './elements/clef-type';
-import { TimeSignature } from './elements/time-signature';
-import { Note } from './elements/note';
-import { NoteType } from './elements/note-type';
-import { Octave } from './elements/octave';
-import { NoteDuration } from './elements/note-duration';
 import { SheetMusicService } from './services/sheet-music.service';
 import { Subscription } from 'rxjs';
 import { SheetMusicRenderer } from './services/sheet-music-renderer';

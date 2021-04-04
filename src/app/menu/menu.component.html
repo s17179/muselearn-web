@@ -21,13 +21,17 @@
       <span>Nowa nuta</span>
     </button>
 
-    <button mat-menu-item>
+    <button mat-menu-item (click)="onRemoveLastNote()">
       <mat-icon>delete</mat-icon>
-      <span>Usuń ostatnią nutę</span>
+      <span>Usuń ostatnią nutę w takcie</span>
     </button>
   </mat-menu>
 
   <mat-menu #noteMenu="matMenu">
-    <button mat-menu-item>Cała nuta</button>
+    <button mat-menu-item (click)="onAddNote(1)">Cała nuta</button>
+    <button mat-menu-item (click)="onAddNote(2)">Półnuta</button>
+    <button mat-menu-item (click)="onAddNote(4)">Ćwierćnuta</button>
+    <button mat-menu-item (click)="onAddNote(8)">Ósemka</button>
+    <button mat-menu-item (click)="onAddNote(16)">Szesnastka</button>
   </mat-menu>
 </mat-toolbar>

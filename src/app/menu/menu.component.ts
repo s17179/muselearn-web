@@ -5,6 +5,9 @@ import { FormGroup } from '@angular/forms';
 import { SheetMusicService } from '../sheet-music/services/sheet-music.service';
 import { Measure } from '../sheet-music/elements/measure';
 import { TimeSignature } from '../sheet-music/elements/time-signature';
+import { Note } from '../sheet-music/elements/note';
+import { NoteType } from '../sheet-music/elements/note-type';
+import { Octave } from '../sheet-music/elements/octave';
 
 @Component({
   selector: 'app-menu',
@@ -28,14 +31,22 @@ export class MenuComponent {
           form.value.timeSignature,
         );
 
-        this.sheetMusicService.addMeasure(
-          new Measure(clefType, timeSignature, []),
-        );
+        this.sheetMusicService.addMeasure(new Measure(clefType, timeSignature));
       }
     });
   }
 
   onRemoveLastMeasure(): void {
     this.sheetMusicService.removeLastMeasure();
+  }
+
+  onAddNote(noteDuration: number): void {
+    this.sheetMusicService.addNote(
+      new Note(NoteType.D, Octave.Four, noteDuration),
+    );
+  }
+
+  onRemoveLastNote(): void {
+    this.sheetMusicService.removeLastNote();
   }
 }
