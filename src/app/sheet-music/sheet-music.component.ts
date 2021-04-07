@@ -38,17 +38,4 @@ export class SheetMusicComponent implements AfterViewInit, OnDestroy {
   ngOnDestroy(): void {
     this.sheetMusicSubscription.unsubscribe();
   }
-
-  // private static getTestMeasure(): Measure {
-  //   return new Measure(
-  //     ClefType.Treble,
-  //     new TimeSignature(4, NoteDuration.QuarterNote),
-  //     [
-  //       new Note(NoteType.D, Octave.Four, NoteDuration.QuarterNote),
-  //       new Note(NoteType.D, Octave.Four, NoteDuration.QuarterNote),
-  //       new Note(NoteType.D, Octave.Four, NoteDuration.QuarterNote),
-  //       new Note(NoteType.D, Octave.Four, NoteDuration.QuarterNote),
-  //     ],
-  //   );
-  // }
 }

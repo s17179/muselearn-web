@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { SheetMusicModule } from './sheet-music/sheet-music.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MenuModule } from './menu/menu.module';
+import { EventLogModule } from './event-log/event-log.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,6 +16,7 @@ import { MenuModule } from './menu/menu.module';
     SheetMusicModule,
     BrowserAnimationsModule,
     MenuModule,
+    EventLogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
