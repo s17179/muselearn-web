@@ -10,6 +10,7 @@ import { NewMeasureComponent } from './new-measure/new-measure.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EventLogModule } from '../event-log/event-log.module';
 
 @NgModule({
   declarations: [MenuComponent, NewMeasureComponent],
@@ -23,6 +24,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatFormFieldModule,
     MatSelectModule,
     ReactiveFormsModule,
+    EventLogModule,
   ],
   exports: [MenuComponent],
 })

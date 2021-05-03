@@ -6,6 +6,7 @@ export class Measure {
   private readonly notes: Note[] = [];
 
   constructor(
+    public readonly id: string,
     private readonly clefType: ClefType,
     private readonly timeSignature: TimeSignature,
   ) {}
@@ -34,5 +35,13 @@ export class Measure {
     if (this.hasNotes()) {
       this.notes.pop();
     }
+  }
+
+  getLastNote(): Note {
+    if (this.hasNotes()) {
+      return this.notes[this.notes.length - 1];
+    }
+
+    throw new Error('There are no notes in the measure');
   }
 }

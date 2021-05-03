@@ -9,6 +9,8 @@ import { SheetMusicService } from './services/sheet-music.service';
 import { Subscription } from 'rxjs';
 import { SheetMusicRenderer } from './services/sheet-music-renderer';
 import { SheetMusic } from './elements/sheet-music';
+import { HttpClient } from '@angular/common/http';
+import { MeasureData, MeasureMapper } from './services/measure.mapper';
 
 @Component({
   selector: 'app-sheet-music',
@@ -23,6 +25,7 @@ export class SheetMusicComponent implements AfterViewInit, OnDestroy {
   constructor(
     private readonly sheetMusicService: SheetMusicService,
     private readonly sheetMusicRenderer: SheetMusicRenderer,
+    private readonly httpClient: HttpClient,
   ) {}
 
   ngAfterViewInit(): void {
@@ -33,6 +36,14 @@ export class SheetMusicComponent implements AfterViewInit, OnDestroy {
           this.sheetMusicElementRef.nativeElement,
         ),
     );
+
+    this.httpClient
+      .get<MeasureData[]>('http://localhost:3000/sheet-music/current')
+      .subscribe((response) => {
+        response.forEach((data) =>
+          this.sheetMusicService.addMeasure(MeasureMapper.map(data)),
+        );
+      });
   }
 
   ngOnDestroy(): void {

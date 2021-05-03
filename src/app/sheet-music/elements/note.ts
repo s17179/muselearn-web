@@ -3,9 +3,11 @@ import { Octave } from './octave';
 import { NoteDuration } from './note-duration';
 
 export class Note {
+  private readonly octave: Octave = Octave.Four;
+  private readonly noteType: NoteType = NoteType.D;
+
   constructor(
-    private readonly noteType: NoteType,
-    private readonly octave: Octave,
+    public readonly id: string,
     private readonly noteDuration: NoteDuration,
   ) {}
 

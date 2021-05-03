@@ -1,16 +1,19 @@
 import { NoteDuration } from './note-duration';
+import { NoteDurationMapper } from '../services/note-duration.mapper';
 
 export class TimeSignature {
   constructor(
-    private readonly beatsInMeasure: number,
-    private readonly noteDuration: NoteDuration,
+    public readonly beatsInMeasure: number,
+    public readonly noteDuration: NoteDuration,
   ) {}
 
   static fromString(timeSignature: string): TimeSignature {
     const splitTimeSignatureArray = timeSignature.split('/');
 
     const beatsInMeasure = +splitTimeSignatureArray[0];
-    const noteDuration = +splitTimeSignatureArray[1];
+    const noteDuration = NoteDurationMapper.mapToHumanValue(
+      +splitTimeSignatureArray[1],
+    );
 
     return new TimeSignature(beatsInMeasure, noteDuration);
   }
